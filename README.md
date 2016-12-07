@@ -1,4 +1,4 @@
-# Fork of AngularJS ui-select [](https://github.com/angular-ui/ui-select) 
+# Fork of  [AngularJS ui-select](https://github.com/angular-ui/ui-select) 
 
 Шаблоны под materializecss.com - dist/materialize/
 
