@@ -1,0 +1,12 @@
+<div class="ui-select-match" ng-hide="$select.open && $select.searchEnabled" ng-disabled="$select.disabled" ng-class="{'btn-default-focus':$select.focus}">
+  <span tabindex="-1" class="btn000 btn-default000 form-control000 ui-select-toggle" aria-label="{{ $select.baseTitle }} activate" ng-disabled="$select.disabled" ng-click="$select.activate()" style="outline: 0;">
+    <span ng-show="$select.isEmpty()" class="ui-select-placeholder text-muted">{{$select.placeholder}}</span>
+    
+    <!-- i class="material-icons right" ng-click="$select.toggle($event)">arrow_drop_down</i -->
+    <a ng-hide="$select.isEmpty()" class="ui-select-match-text left" ng-class="{'ui-select-allow-clear': $select.allowClear && !$select.isEmpty()}" ng-transclude="" href="javascript:"></a>
+    
+    <a ng-show="$select.allowClear && !$select.isEmpty() && ($select.disabled !== true)" aria-label="{{ $select.baseTitle }} clear" style="margin-right: 10px" ng-click="$select.clear($event)" class="btn000 right">
+      <i class="material-icons" aria-hidden="true">remove</i>
+    </a>
+  </span>
+</div>
