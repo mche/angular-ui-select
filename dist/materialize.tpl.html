@@ -1,10 +1,10 @@
 @@@ materialize/select.tpl.html
 
 <div class="ui-select-container ui-select-bootstrap000 dropdown000" ng-class="{open: $select.open}">
+  <input type="search" autocomplete="off" tabindex="-1" aria-expanded="true" aria-label="{{ $select.baseTitle }}" aria-owns="ui-select-choices-{{ $select.generatedId }}" class="form-control000 ui-select-search" ng-class="{ 'ui-select-search-hidden' : !$select.searchEnabled }" placeholder="{{$select.placeholder}}" ng-model="$select.search" ng-focus="$select.activate()"  ng-show="$select.isEmpty() || $select.open" ng-show000="$select.isEmpty()" name000="search-input-{{ $select.generatedId }}">
+  <!-- label for="search-input-{{ $select.generatedId }}" data-error="" data-success="">{{ $select.placeholder }}</label -->
   <div class="ui-select-match"></div>
   <span ng-show="$select.open && $select.refreshing && $select.spinnerEnabled" class="ui-select-refreshing {{$select.spinnerClass}}"></span>
-  <input type="search" autocomplete="off" tabindex="-1" aria-expanded="true" aria-label="{{ $select.baseTitle }}" aria-owns="ui-select-choices-{{ $select.generatedId }}" class="form-control ui-select-search" ng-class="{ 'ui-select-search-hidden' : !$select.searchEnabled }" placeholder="{{$select.placeholder}}" ng-model="$select.search" ng-show="$select.open" name000="search-input-{{ $select.generatedId }}">
-  <!-- label for="search-input-{{ $select.generatedId }}" data-error="" data-success="">{{ $select.placeholder }}</label -->
   <div class="ui-select-choices"></div>
   <div class="ui-select-no-choice"></div>
 </div>
@@ -13,8 +13,8 @@
 
 <div class="ui-select-container ui-select-multiple ui-select-bootstrap000 dropdown000 form-control000" ng-class="{open: $select.open}">
   <div>
+    <input type="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="ui-select-search input-xs000" placeholder="{{$selectMultiple.getPlaceholder()}}" ng-disabled="$select.disabled" ng-click="$select.activate()" ng-model="$select.search" role="combobox" aria-expanded="{{$select.open}}" aria-label="{{$select.baseTitle}}" ng-class="{'spinner': $select.refreshing}" ondrop="return false;">
     <div class="ui-select-match"></div>
-    <input type="search" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" class="ui-select-search input-xs" placeholder="{{$selectMultiple.getPlaceholder()}}" ng-disabled="$select.disabled" ng-click="$select.activate()" ng-model="$select.search" role="combobox" aria-expanded="{{$select.open}}" aria-label="{{$select.baseTitle}}" ng-class="{'spinner': $select.refreshing}" ondrop="return false;">
   </div>
   <div class="ui-select-choices"></div>
   <div class="ui-select-no-choice"></div>
@@ -24,23 +24,19 @@
 
 <div class="ui-select-match" ng-hide="$select.open && $select.searchEnabled" ng-disabled="$select.disabled" ng-class000="{'btn-default-focus':$select.focus}">
   
-  <span ng-hide="$select.isEmpty()" style="position: absolute;">
-      <a href="javascript:" ng-click="$ctrl.clearAddr($select)" title="очистить адрес"><i class="material-icons red-text">close</i></a>
-      <a href="javascript:" ng-click="$ctrl.addrUp($index)" title="поднять адрес" ng-if="$ctrl.addrUp($index, 1)"><i class="material-icons">arrow_upward</i></a>
-    </span>
-  
-  <span tabindex="-1" class="btn000 btn-default000 form-control000 ui-select-toggle" aria-label="{{ $select.baseTitle }} activate" ng-disabled="$select.disabled" ng-click="$select.activate()" style="outline: 0;">
-    
-    <a ng-show="$select.isEmpty()" class="ui-select-placeholder text-muted" href="javascript:">{{$select.placeholder}}</a>
-    <!-- i ng-show="$select.isEmpty()" style="position: absolute; right: 0;" class="material-icons" ng-click="$select.toggle($event)">arrow_drop_down</i -->
-    
-    
-    <a ng-hide="$select.isEmpty()" class="ui-select-match-text left" ng-class="{'ui-select-allow-clear': $select.allowClear && !$select.isEmpty()}" ng-transclude="" href="javascript:"></a>
-    
-    <!-- a ng-show="$select.allowClear && !$select.isEmpty() && ($select.disabled !== true)" aria-label="{{ $select.baseTitle }} clear" style="margin-right: 10px" ng-click="$select.clear($event)" class="btn000 right">
-      <i class="material-icons" aria-hidden="true">remove</i -->
-    </a>
+  <span ng-hide="$select.isEmpty()" style000="position: absolute;" class="right">
+    <a href="javascript:" ng-click="$ctrl.addrUp($index)" title="поднять адрес" ng-if="$ctrl.addrUp($index, 1)"><i class="material-icons">arrow_upward</i></a>
+    <a href="javascript:" ng-click="$ctrl.disableAddr($index)" title="отключить адрес" ><i class="material-icons black-text" ng-class="{'grey-text': !!!$ctrl.isDisabled($select), 'black-text': !!$ctrl.isDisabled($select)}">check_circle</i></a>
+    <a href="javascript:" ng-click="$ctrl.removeAddr($index)" title="удалить адрес"><i class="material-icons red-text">close</i></a>
   </span>
+  
+  <a tabindex000="-1" class="ui-select-toggle btn000 btn-default000 form-control000 " ng-class="{'grey-text': $ctrl.isDisabled($select), 'focused':$select.focus}" aria-label="{{ $select.baseTitle }} activate" ng-disabled000="$select.disabled" ng-focus="$select.activate()" ng-click000="$select.activate()" style="outline: 0;" href="javascript:">
+    
+    <!--span ng-show="$select.isEmpty()" class="ui-select-placeholder text-muted000" >{{$select.placeholder}}</span-->
+   
+    <span ng-hide="$select.isEmpty()" class="ui-select-match-text left" ng-class="{'ui-select-allow-clear': $select.allowClear && !$select.isEmpty()}" ng-disabled000="$ctrl.isDisabled($index)" ng-transclude="" ng-href000="{{$ctrl.isDisabled($index) ? '' : 'javascript:'}}"></span>
+    
+  </a>
 </div>
 
 @@@ materialize/match-multiple.tpl.html
@@ -58,7 +54,7 @@
 @@@ materialize/choices.tpl.html
 
 <ul 
-  class="ui-select-choices ui-select-choices-content ui-select-dropdown dropdown-menu000"
+  class="ui-select-choices ui-select-choices-content ui-select-dropdown"
   ng-show="$select.open && $select.items.length > 0"
 >
   <li 

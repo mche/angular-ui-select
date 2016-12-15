@@ -37,7 +37,7 @@
   box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(102, 175, 233, 0.6);
 }*/
 
-.ui-select-container .ui-select-toggle {
+.ui-select-container {/* .ui-select-toggle*/
   position: relative;
 }
 
@@ -196,14 +196,22 @@ body > .ui-select-container.open {
     box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.25);
 }*/
 
-.ui-select-container .ui-select-match-text {
-    width: 100%;
-    padding-right: 1em;
+.ui-select-toggle {
+  display:inline-block;
+  width: 100%;
+  overflow: hidden;
+  
 }
+
+.ui-select-match .disabled {
+  /*color: grey;*/
+  
+}
+
 .ui-select-container .ui-select-match-text span {
-    display: inline-block;
+    /*display: inline-block;
     width: 100%;
-    overflow: hidden;
+    overflow: hidden;*/
 }
 /*.ui-select-bootstrap .ui-select-toggle > a.btn {
   position: absolute;
@@ -214,13 +222,9 @@ body > .ui-select-container.open {
 
 
 
-.ui-select-container{
-  margin-right: 1rem;
-}
-
-.ui-select-match-text, .ui-select-placeholder {
+.ui-select-match-text{
   border-bottom: 1px solid;
-  display:block;
+  display:inline-block;
   width: 100%;
   /*cursor:pointer;*/
 }
