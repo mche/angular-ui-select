@@ -24,19 +24,22 @@
 
 <div class="ui-select-match" ng-hide="$select.open && $select.searchEnabled" ng-disabled="$select.disabled" ng-class000="{'btn-default-focus':$select.focus}">
   
+  
+  
+  <span tabindex000="-1" ng-hide="$select.isEmpty()" class="ui-select-toggle btn000 btn-default000 form-control000 " aria-label="{{ $select.baseTitle }} activate" ng-disabled000="$select.disabled" style="outline: 0;" >
+    
+    <!--span ng-show="$select.isEmpty()" class="ui-select-placeholder text-muted000" >{{$select.placeholder}}</span-->
+   
+    <a class="ui-select-match-text left" ng-class="{'ui-select-allow-clear': $select.allowClear && !$select.isEmpty(), 'grey-text': $ctrl.isDisabled($select), 'focused':$select.focus}" ng-disabled000="$ctrl.isDisabled($index)" ng-transclude="" ng-href000="{{$ctrl.isDisabled($index) ? '' : 'javascript:'}}" ng-focus="$select.activate()" href="javascript:"></a>
+    
+  </span>
+  
   <span ng-hide="$select.isEmpty()" style000="position: absolute;" class="right">
     <a href="javascript:" ng-click="$ctrl.addrUp($index)" title="поднять адрес" ng-if="$ctrl.addrUp($index, 1)"><i class="material-icons">arrow_upward</i></a>
     <a href="javascript:" ng-click="$ctrl.disableAddr($index)" title="отключить адрес" ><i class="material-icons black-text" ng-class="{'grey-text': !!!$ctrl.isDisabled($select), 'black-text': !!$ctrl.isDisabled($select)}">check_circle</i></a>
     <a href="javascript:" ng-click="$ctrl.removeAddr($index)" title="удалить адрес"><i class="material-icons red-text">close</i></a>
   </span>
   
-  <a tabindex000="-1" class="ui-select-toggle btn000 btn-default000 form-control000 " ng-class="{'grey-text': $ctrl.isDisabled($select), 'focused':$select.focus}" aria-label="{{ $select.baseTitle }} activate" ng-disabled000="$select.disabled" ng-focus="$select.activate()" ng-click000="$select.activate()" style="outline: 0;" href="javascript:">
-    
-    <!--span ng-show="$select.isEmpty()" class="ui-select-placeholder text-muted000" >{{$select.placeholder}}</span-->
-   
-    <span ng-hide="$select.isEmpty()" class="ui-select-match-text left" ng-class="{'ui-select-allow-clear': $select.allowClear && !$select.isEmpty()}" ng-disabled000="$ctrl.isDisabled($index)" ng-transclude="" ng-href000="{{$ctrl.isDisabled($index) ? '' : 'javascript:'}}"></span>
-    
-  </a>
 </div>
 
 @@@ materialize/match-multiple.tpl.html
